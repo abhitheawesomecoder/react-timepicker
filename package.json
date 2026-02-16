@@ -24,11 +24,19 @@
   ],
   "author": "Abhishek Kumar",
   "license": "MIT",
+  "dependencies": {
+    "@internationalized/date": "^3.10.1",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "clsx": "^2.1.1",
+    "luxon": "^3.7.2",
+    "tailwind-merge": "^3.4.1"
+  },
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17"
   },
   "devDependencies": {
+    "@types/luxon": "^3.7.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "tsup": "^8.5.1",

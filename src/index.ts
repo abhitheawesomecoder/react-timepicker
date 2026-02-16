@@ -1,1 +1,2 @@
-export * from "./TimePicker";
+export * from './ReactTimepicker';
+export * from './components/timepicker-field';
