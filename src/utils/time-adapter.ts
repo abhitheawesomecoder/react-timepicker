@@ -1,4 +1,4 @@
-import { DateTime, LocaleOptions } from 'luxon';
+import { DateTime, LocaleOptions, NumberingSystem } from 'luxon';
 
 import { TimeFormat } from '../types/time-format.enum';
 import { TimePeriod } from '../types/time-period.enum';
@@ -10,7 +10,7 @@ import { Time } from '@internationalized/date';
 export class TimeAdapter {
     static DEFAULT_FORMAT = 12;
     static DEFAULT_LOCALE = 'en-US';
-    static DEFAULT_NUMBERING_SYSTEM = 'latn';
+    static DEFAULT_NUMBERING_SYSTEM: NumberingSystem = 'latn';
 
     // format string "14:30:00" to Time object
     static parseTimeString(timeString: string) { // for React Aria
@@ -42,11 +42,10 @@ export class TimeAdapter {
         const parsedTime = TimeAdapter.parseTime(time, opts).setLocale(TimeAdapter.DEFAULT_LOCALE);
 
         if (format !== 24) {
-            return parsedTime.toLocaleString({
-                ...DateTime.TIME_SIMPLE,
-                hour12: format !== 24,
-                numberingSystem: TimeAdapter.DEFAULT_NUMBERING_SYSTEM
-            }).replace(/\u200E/g, '').replace(/\u202F/g, ' ');
+            return parsedTime.toLocaleString(
+                { ...DateTime.TIME_SIMPLE, hour12: format !== 24 },
+                { numberingSystem: TimeAdapter.DEFAULT_NUMBERING_SYSTEM }
+            ).replace(/\u200E/g, '').replace(/\u202F/g, ' ');
         }
 
         const isoTime = parsedTime.toISOTime({ includeOffset: false, suppressMilliseconds: true, suppressSeconds: true });
@@ -123,7 +122,7 @@ export class TimeAdapter {
     }
 
     private static getLocaleOptionsByTime(time: string, opts: TimeOptions): LocaleOptions {
-        const localeConfig: LocaleOptions = { numberingSystem: opts.numberingSystem, locale: opts.locale };
+        const localeConfig: LocaleOptions = { numberingSystem: opts.numberingSystem as NumberingSystem | undefined, locale: opts.locale };
         const defaultConfig: LocaleOptions = { numberingSystem: TimeAdapter.DEFAULT_NUMBERING_SYSTEM, locale: TimeAdapter.DEFAULT_LOCALE };
 
         return isNaN(parseInt(time, 10)) ? localeConfig : defaultConfig;

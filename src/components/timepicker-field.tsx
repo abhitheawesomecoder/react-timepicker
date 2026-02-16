@@ -1,4 +1,3 @@
-import { Clock3 } from 'lucide-react';
 import { Input, InputAddon, InputGroup } from './input';
 import { DateInput, TimeField } from './datefield';
 import { useState } from 'react';
