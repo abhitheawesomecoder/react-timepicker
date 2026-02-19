@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Radix Dialog: ensure overlay and content are visible when open */
+[data-radix-dialog-overlay] {
+  position: fixed;
+  inset: 0;
+}
+[data-radix-dialog-content] {
+  position: fixed;
+}
