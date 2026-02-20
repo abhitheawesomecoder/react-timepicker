@@ -15,7 +15,7 @@ export function TimepickerDialControl({ mode, hour, minute, setMode }: Timepicke
         {/* Hour */}
         <button
             onClick={() => setMode("hour")}
-            className={`px-2 rounded ${mode === "hour"
+            className={`px-2 rounded focus:outline-none ${mode === "hour"
                 ? "bg-[#85c54f] text-white"
                 : "text-gray-800"
                 }`}
@@ -28,7 +28,7 @@ export function TimepickerDialControl({ mode, hour, minute, setMode }: Timepicke
         {/* Minute */}
         <button
             onClick={() => setMode("minute")}
-            className={`px-2 rounded ${mode === "minute"
+            className={`px-2 rounded focus:outline-none ${mode === "minute"
                 ? "bg-[#85c54f] text-white"
                 : "text-gray-800"
                 }`}
