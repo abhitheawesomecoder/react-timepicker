@@ -166,7 +166,7 @@ export function TimepickerClock({ mode, format = 12, hour, minute, onChange }: T
 
       {/* Hand */}
       <div
-        className="absolute w-0.5 bg-[#85c54f] origin-bottom rounded bottom-1/2 left-1/2"
+        className="absolute w-0.5 bg-[#85c54f] origin-bottom rounded bottom-1/2 left-1/2 transition-transform duration-200 ease-out"
         style={{
           height: handHeight,
           transform: `translateX(-50%) rotate(${degree}deg)`
