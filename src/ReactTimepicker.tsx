@@ -125,7 +125,7 @@ export function ReactTimepicker({
 
                     {displayInput ? (<InputGroup className={`w-full ${disabled ? 'pointer-events-none opacity-50' : ''}`}>
                         <Input
-                            value={`${time.hour.toString().padStart(2, "0")}:${time.minute.toString().padStart(2, "0")} ${period}`}
+                            value={format == 24 ? `${time.hour.toString().padStart(2, "0")}:${time.minute.toString().padStart(2, "0")}` : `${time.hour.toString().padStart(2, "0")}:${time.minute.toString().padStart(2, "0")} ${period}`}
                             disabled={disableClick}
                         />
                         <InputAddon mode="icon">
@@ -144,7 +144,14 @@ export function ReactTimepicker({
 
                         {/* -------- HEADER TIME DISPLAY -------- */}
 
-                        <div className="flex justify-between items-center mb-6">
+                        {format == 24 ? (<div className="flex justify-center items-center mb-6">
+
+                            {/* -------- TIME -------- */}
+
+                            <TimepickerDialControl mode={mode} hour={time.hour} minute={time.minute} setMode={setMode} />
+
+
+                        </div>) : (<div className="flex justify-between items-center mb-6">
 
                             {/* -------- TIME -------- */}
 
@@ -154,7 +161,7 @@ export function ReactTimepicker({
 
                             <TimepickerPeriod period={period} setPeriod={setPeriod} />
 
-                        </div>
+                        </div>)}
 
                         {/* -------- CLOCK -------- */}
 
