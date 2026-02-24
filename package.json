@@ -26,6 +26,10 @@
     "react",
     "timepicker"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/abhitheawesomecoder/react-timepicker.git"
+  },
   "author": "Abhishek Kumar",
   "license": "MIT",
   "dependencies": {
